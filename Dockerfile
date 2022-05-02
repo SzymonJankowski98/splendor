@@ -1,6 +1,11 @@
-FROM ruby:3.1.2
+FROM ruby:3.1.2 AS ruby
+
+RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN apt-get update -qq && apt-get install -yq \
+    nodejs \
+    yarn \
     curl \
     git \
     postgresql-client \
@@ -11,6 +16,8 @@ WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 COPY .ruby-version /app/.ruby-version
+
+RUN yarn install
 RUN bundle install
 
 COPY entrypoint.sh /usr/bin/
