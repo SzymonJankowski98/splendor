@@ -11,10 +11,13 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 
 # Frontend
+gem 'tailwindcss-rails'
 gem 'jsbundling-rails'
+gem 'cssbundling-rails'
 gem 'hamlit'
 gem 'turbo-rails'
 gem 'stimulus-rails'
+
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
