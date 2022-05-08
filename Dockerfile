@@ -15,10 +15,13 @@ WORKDIR /app
 
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
+COPY .overcommit_gems.rb /app/.overcommit_gems.rb
+COPY .overcommit_gems.rb.lock /app/.overcommit_gems.rb.lock
 COPY .ruby-version /app/.ruby-version
 
 RUN yarn install
 RUN bundle install
+RUN bundle install --gemfile=.overcommit_gems.rb
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
