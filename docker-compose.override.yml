@@ -7,8 +7,6 @@ x-assets: &default-assets
       - "NODE_ENV=${NODE_ENV:-production}"
   env_file:
     - ".env"
-  restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
-  stop_grace_period: "3s"
   tty: true
   volumes:
     - ".:/app"
