@@ -3,9 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby File.read(File.expand_path('.ruby-version', __dir__)).chomp
 
-# Rails 
+# Core
+gem 'devise'
 gem 'rails', '7.0.2.3'
-
 gem 'sprockets-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
