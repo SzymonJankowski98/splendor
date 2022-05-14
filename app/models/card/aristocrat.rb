@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Card
-  class Arystocrat < Card::Base; end
+  class Aristocrat < Card::Base; end
 end

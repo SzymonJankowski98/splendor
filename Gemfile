@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby File.read(File.expand_path('.ruby-version', __dir__)).chomp
@@ -17,7 +17,6 @@ gem 'cssbundling-rails'
 gem 'hamlit'
 gem 'turbo-rails'
 gem 'stimulus-rails'
-
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -55,6 +54,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'rspec-rails', '6.0.0.rc1'
 end
 

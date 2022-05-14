@@ -2,6 +2,7 @@
 
 module Card
   class Base < ApplicationRecord
+    self.abstract_class = true
     self.table_name = :cards
 
     belongs_to :resource, class_name: 'Resource::Regular'

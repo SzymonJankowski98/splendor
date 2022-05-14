@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe CardsGame, type: :model do
+describe CardGame, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end
