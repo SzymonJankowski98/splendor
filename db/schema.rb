@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_191758) do
   create_table "card_resources", force: :cascade do |t|
     t.bigint "card_id", null: false
     t.bigint "resource_id", null: false
+    t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_card_resources_on_card_id"
@@ -25,8 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_191758) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
+    t.string "type", null: false
     t.string "state"
-    t.string "value"
+    t.integer "value"
     t.integer "level"
     t.bigint "resource_id", null: false
     t.datetime "created_at", null: false
@@ -64,7 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_191758) do
   end
 
   create_table "resources", force: :cascade do |t|
-    t.string "type"
+    t.string "type", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

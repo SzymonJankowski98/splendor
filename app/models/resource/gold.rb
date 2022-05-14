@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Resource
-  class Diamond < Resource::Base; end
+  class Gold < Resource::Base; end
 end

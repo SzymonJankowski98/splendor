@@ -3,6 +3,7 @@ class CreateCardResources < ActiveRecord::Migration[7.0]
     create_table :card_resources do |t|
       t.references :card, null: false, foreign_key: true, index: true
       t.references :resource, null: false, foreign_key: true, index: true
+      t.integer :amount, null: false
 
       t.timestamps
     end

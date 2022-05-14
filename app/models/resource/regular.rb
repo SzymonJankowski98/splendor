@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Resource
-  class Ruby < Resource::Base; end
+  class Regular < Resource::Base; end
 end
