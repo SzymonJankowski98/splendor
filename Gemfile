@@ -43,6 +43,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development do
+  gem 'annotate'
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
