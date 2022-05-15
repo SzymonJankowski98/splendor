@@ -13,8 +13,9 @@
 #
 # Indexes
 #
-#  index_game_participants_on_game_id  (game_id)
-#  index_game_participants_on_user_id  (user_id)
+#  index_game_participants_on_game_id            (game_id)
+#  index_game_participants_on_order_and_game_id  (order,game_id) UNIQUE
+#  index_game_participants_on_user_id            (user_id)
 #
 # Foreign Keys
 #
@@ -24,5 +25,19 @@
 require 'rails_helper'
 
 describe GameParticipant, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { game_participant }
+
+  let(:game_participant) { build(:game_participant) }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:game) }
+  end
+
+  describe 'validations' do
+    describe '#order' do
+      it { is_expected.to validate_uniqueness_of(:order).scoped_to(:game_id).allow_nil }
+      it { is_expected.to validate_inclusion_of(:order).in_range(1..4) }
+    end
+  end
 end

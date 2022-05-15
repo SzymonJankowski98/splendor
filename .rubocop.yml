@@ -11,6 +11,10 @@ AllCops:
     - tmp/**/*
     - db/**/*
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
 Gemspec/DateAssignment:
   Enabled: true
 Gemspec/RequireMFA:
@@ -222,3 +226,5 @@ RSpec/FactoryBot/SyntaxMethods:
   Enabled: true
 RSpec/Rails/AvoidSetupHook:
   Enabled: true
+RSpec/MultipleExpectations:
+  Enabled: false

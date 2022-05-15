@@ -21,24 +21,24 @@
 require 'rails_helper'
 
 describe User, type: :model do
+  subject { user }
+
   let(:user) { build(:user) }
 
-  describe '#validations' do
+  describe 'associations' do
+    it { is_expected.to have_many(:game_participants).dependent(:destroy) }
+    it { is_expected.to have_many(:games).through(:game_participants) }
+  end
+
+  describe 'validations' do
     describe '#email' do
-      it 'valid with uniqueue email' do
-        expect(user).to be_valid
-      end
+      it { is_expected.to validate_presence_of(:email) }
+      it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+    end
 
-      it 'invalid without email' do
-        user.email = nil
-        expect(user).not_to be_valid
-      end
-
-      it 'invalid with not unique email' do
-        create(:user, email: 'test.email@test.com')
-        user.email = 'test.email@test.com'
-        expect(user).not_to be_valid
-      end
+    describe '#password' do
+      it { is_expected.to validate_presence_of(:password) }
+      it { is_expected.to validate_length_of(:password).is_at_least(8) }
     end
   end
 end
