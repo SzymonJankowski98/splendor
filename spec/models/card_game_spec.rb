@@ -26,5 +26,13 @@
 require 'rails_helper'
 
 describe CardGame, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { card_game }
+
+  let(:card_game) { create(:card_game) }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:game) }
+    it { is_expected.to belong_to(:card) }
+    it { is_expected.to belong_to(:game_participant).optional }
+  end
 end

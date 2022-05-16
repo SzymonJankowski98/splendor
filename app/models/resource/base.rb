@@ -8,5 +8,7 @@ module Resource
     has_many :sources, class_name: 'Cards::Regular', foreign_key: :card_id, dependent: :destroy, inverse_of: :resource
     has_many :card_resources, dependent: :destroy
     has_many :cards, class_name: 'Cards::Regular', foreign_key: :card_id, through: :card_resources
+
+    validates :name, presence: true, uniqueness: true
   end
 end
