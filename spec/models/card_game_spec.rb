@@ -28,11 +28,11 @@ require 'rails_helper'
 describe CardGame, type: :model do
   subject { card_game }
 
-  let(:card_game) { create(:card_game) }
+  let(:card_game) { build(:card_game) }
 
   describe 'associations' do
     it { is_expected.to belong_to(:game) }
-    it { is_expected.to belong_to(:card) }
+    it { is_expected.to belong_to(:card).class_name('Card::Base') }
     it { is_expected.to belong_to(:game_participant).optional }
   end
 end

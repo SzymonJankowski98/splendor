@@ -24,5 +24,19 @@
 require 'rails_helper'
 
 describe CardResource, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { card_resource }
+
+  let(:card_resource) { build(:card_resource) }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:card) }
+    it { is_expected.to belong_to(:resource) }
+  end
+
+  describe 'validations' do
+    describe '#amount' do
+      it { is_expected.to validate_presence_of(:amount) }
+      it { is_expected.to validate_numericality_of(:amount).is_greater_than_or_equal_to(1) }
+    end
+  end
 end

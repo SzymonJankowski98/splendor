@@ -24,7 +24,7 @@
 #  fk_rails_...  (game_participant_id => game_participants.id)
 #
 class CardGame < ApplicationRecord
-  belongs_to :card
+  belongs_to :card, class_name: 'Card::Base'
   belongs_to :game
   belongs_to :game_participant, optional: true
 end

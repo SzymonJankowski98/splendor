@@ -24,4 +24,6 @@
 class CardResource < ApplicationRecord
   belongs_to :card, class_name: 'Card::Base'
   belongs_to :resource, class_name: 'Resource::Regular'
+
+  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 1 }
 end

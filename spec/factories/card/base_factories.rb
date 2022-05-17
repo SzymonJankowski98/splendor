@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :card_base, class: 'Card::Base' do
-    association :resource
+    association :resource, factory: :resource_regular
 
     sequence(:name) { |n| "card#{n}" }
     level { 1 }
