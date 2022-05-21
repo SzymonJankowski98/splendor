@@ -16,6 +16,7 @@
 #
 # Indexes
 #
+#  index_cards_on_name         (name) UNIQUE
 #  index_cards_on_resource_id  (resource_id)
 #
 # Foreign Keys

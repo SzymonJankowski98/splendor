@@ -2,7 +2,6 @@
 
 module Resource
   class Base < ApplicationRecord
-    self.abstract_class = true
     self.table_name = :resources
 
     has_many :sources, class_name: 'Card::Regular', foreign_key: :resource_id,

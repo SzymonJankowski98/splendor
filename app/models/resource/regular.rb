@@ -10,6 +10,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_resources_on_name  (name) UNIQUE
+#
 module Resource
   class Regular < Resource::Base; end
 end
