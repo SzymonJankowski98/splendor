@@ -1,0 +1,31 @@
+name: Tests
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    name: Run tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create env file
+      uses: SpicyPizza/create-envfile@v1.3
+      with:
+        envkey_RAILS_ENV: 'test'
+        envkey_DEVISE_SECRET_KEY: ${{ secrets.DEVISE_SECRET_KEY }}
+        envkey_REDIS_URL: ${{ secrets.REDIS_URL }}
+        file_name: .env
+
+    - name: Build container
+      run: docker-compose build
+    
+    - name: Prepare tests db
+      run: docker-compose run web bundle exec rake db:create db:migrate db:seed
+
+    - name: Run specs
+      run: docker-compose run web rails spec
